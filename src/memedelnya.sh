@@ -6,6 +6,7 @@ vk_user_id=null
 vk_ts=null
 vk_ref=null
 access_token=null
+user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36"
 
 function authenticate() {
 	# 1 - sign: (string): <sign>
@@ -29,7 +30,7 @@ function authenticate() {
 function login() {
 	response=$(curl --request POST \
 		--url "$api" \
-		--user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36" \
+		--user-agent "$user_agent" \
 		--header "content-type: application/json" \
 		--data '{
 			"method": "account.auth",
@@ -50,7 +51,7 @@ function get_templates() {
 	# 3 - search: (string): <search - default: "">
 	curl --request POST \
 		--url "$api" \
-		--user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36" \
+		--user-agent "$user_agent" \
 		--header "content-type: application/json" \
 		--data '{
 			"method": "templates.get",
@@ -66,7 +67,7 @@ function get_template_info() {
 	# 1 - template_id: (integer): <template_id>
 	curl --request POST \
 		--url "$api" \
-		--user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36" \
+		--user-agent "$user_agent" \
 		--header "content-type: application/json" \
 		--data '{
 			"method": "templates.get",
@@ -81,7 +82,7 @@ function get_posts() {
 	# 2 - offset: (integer): <offset - default: 0>
 	curl --request POST \
 		--url "$api" \
-		--user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36" \
+		--user-agent "$user_agent" \
 		--header "content-type: application/json" \
 		--header "authorization: Bearer $access_token" \
 		--data '{
